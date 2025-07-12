@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulario de Rol de Usuario</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="../../assets/img/logos/logo.png" type="image/png" />
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome para iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- DataTables -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.css" />
+
+  <!-- Loading Spinner -->
+  <link rel="stylesheet" href="../../assets/css/loading.css" />
+</head>
+
+<body>
+
+  <div class="container-fluid d-flex flex-column min-vh-100">
+    <main>
+      <h1 class="text-center mt-3">Formulario de Rol Usuario</h1>
+
+      <div class="d-flex justify-content-end my-3">
+        <button type="button" class="btn btn-primary" onclick="add()" title="Agregar Rol Usuario">
+          <i class="fa fa-plus me-1"></i> Agregar
+        </button>
+      </div>
+
+      <!-- Tabla -->
+      <div class="table-responsive">
+        <table class="table table-dark table-hover" id="app-table">
+          <thead>
+            <tr class="table-primary text-center">
+              <th>#</th>
+              <th>User ID</th>
+              <th>Role ID</th>
+              <th>Status ID</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="app-table-body" class="text-center"></tbody>
+          <tfoot>
+            <tr class="table-primary text-center">
+              <td>#</td>
+              <td>User ID</td>
+              <td>Role ID</td>
+              <td>Status ID</td>
+              <td>Acciones</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="appModal" tabindex="-1" aria-labelledby="appModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="appModalLabel">Rol Usuario</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Formulario -->
+              <form id="userRoleForm">
+                <div class="mb-3">
+                  <label for="user_id" class="form-label">User ID</label>
+                  <div class="form-floating">
+                    <input type="number" class="form-control" id="user_id" name="user_id" required />
+                    <label for="user_id">User ID</label>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="role_id" class="form-label">Role ID</label>
+                  <div class="form-floating">
+                    <input type="number" class="form-control" id="role_id" name="role_id" required />
+                    <label for="role_id">Role ID</label>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="status_id" class="form-label">Status ID</label>
+                  <div class="form-floating">
+                    <input type="number" class="form-control" id="status_id" name="status_id" required />
+                    <label for="status_id">Status ID</label>
+                  </div>
+                </div>
+
+                <div class="mb-3 text-end">
+                  <button type="reset" class="btn btn-outline-secondary me-2">
+                    <i class="fas fa-undo me-1"></i> Limpiar
+                  </button>
+                  <button type="submit" class="btn btn-outline-primary">
+                    <i class="fas fa-paper-plane me-1"></i> Enviar
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Loading -->
+  <div id="loading-screen">
+    <div class="spinner-border text-light spinner" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+    <p class="mt-3">Cargando datos, por favor espera...</p>
+  </div>
+
+  <!-- JS Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
+
+  <!-- JS Personalizados -->
+  <script src="../../config/constants.js"></script>
+  <script src="../../storage/appStorage.js"></script>
+  <script src="../../services/services.js"></script>
+  <script src="../../config/main.js"></script>
+  <script src="../../utils/Form.js"></script>
+  <script src="../../controllers/userRole/userRole.controller.js"></script>
+
+</body>
+
+</html>
